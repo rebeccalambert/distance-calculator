@@ -21,7 +21,7 @@ import React, { Component } from 'react';
 //   }
 // }
 
-function InputLocation({ increment, counter }) {
+function InputLocation({ increment }) {
 
   const incrementing = e => {
     increment();
@@ -30,7 +30,6 @@ function InputLocation({ increment, counter }) {
   return (
     <div>
       <button onClick={e => incrementing()}>Click Me</button>
-      <p>You've pressed the button {counter} times.</p>
     </div>
   );
 
