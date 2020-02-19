@@ -21,15 +21,24 @@ import React, { Component } from 'react';
 //   }
 // }
 
-function InputLocation({ increment }) {
+function InputLocation({ settingMax }) {
 
-  const incrementing = e => {
-    increment();
+  const updatingMax = e => {
+    // console.log(e.target.value)
+    settingMax(e.target.value);
   }
 
   return (
     <div>
-      <button onClick={e => incrementing()}>Click Me</button>
+      <label className="form-label">What's the max you want to travel?</label>
+      <input className="form-input"
+        type="number"
+        name="party"
+        min="0"
+        onChange={e => updatingMax(e)}
+        placeholder="0"
+      />
+      {/* <button onClick={e => incrementing()}>Click Me</button> */}
     </div>
   );
 
