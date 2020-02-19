@@ -41,17 +41,16 @@ function App() {
 
   const findCities = e => {
     let limit = info.maxDistance;
-    // console.log(limit)
-    // console.log("limit")
+    let baseLat = Number(info.latitude);
+    let baseLong = Number(info.longitude);
+    
     let cities = citiesArray.default;
+
     let closeCities = []
     for (let i=0; i < cities.length; i++) {
       let city = cities[i] 
-      console.log(info)
-      // console.log(info.longitude)
-      console.log("---------")
 
-      let distance = 2 * Math.asin(Math.sqrt((Math.sin((info.latitude-city.latitude)/2))^2 + Math.cos(info.latitude) * Math.cos(city.latitude)*(Math.sin((info.longitude-city.longitude)/2))^2))
+      let distance = 2 * Math.asin(Math.sqrt((Math.sin((baseLat - city.latitude)/2))^2 + Math.cos(baseLat) * Math.cos(city.latitude)*(Math.sin((baseLong - city.longitude)/2))^2))
       console.log(distance)
       if (distance <= limit) {
         closeCities.push(city);
