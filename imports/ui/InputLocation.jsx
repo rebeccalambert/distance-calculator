@@ -50,7 +50,7 @@ function InputLocation({ settingInfo, existingInfo }) {
     
       <br></br>
 
-      <label>What's the max you want to travel?</label>
+      <label>What's the max you want to travel (in kilometers)?</label>
       <input
         type="number"
         min="0"
