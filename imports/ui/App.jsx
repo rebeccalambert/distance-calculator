@@ -6,6 +6,7 @@ import * as citiesArray from '../api/addresses';
 function App() {
   
   const [info, setInfo] = useState({})
+  const [currCity, setCurrCity] = useState("")
 
   const settingInfo = (newInfo) => {
     console.log(newInfo)
@@ -20,10 +21,17 @@ function App() {
     });
   }
 
+
   const currentCity = () => {
     let cities = citiesArray.default;
     for (let i=0; i < cities.length; i++) {
-      console.log(cities[i])
+      let city = cities[i]
+      // console.log(city.longitude)
+      // console.log(info.longitude) 
+      if (city.longitude == info.longitude && city.latitude == info.latitude){
+        console.log(city.locality)
+        setCurrCity(city.locality)
+      }
     }
   }
 
@@ -32,7 +40,7 @@ function App() {
     <div>
       <h1>Welcome to a distance calculator!</h1>
       <InputLocation settingInfo={settingInfo}/>
-      <Info maxDistance={info.maxDistance} Longitude={info.longitude} Latitude={info.latitude}/>
+      <Info maxDistance={info.maxDistance} currCity={currCity} Longitude={info.longitude} Latitude={info.latitude}/>
       <button onClick={() => currentCity()}>list the cities</button>
     </div>
   );

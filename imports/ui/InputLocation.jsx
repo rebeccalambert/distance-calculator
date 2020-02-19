@@ -32,13 +32,13 @@ function InputLocation({ settingInfo }) {
       <label>Where are you at?</label>
       <textarea
         rows="1"
-        placeholder="Longitude"
-        onChange={e => updatingLong(e)}
+        placeholder="Latitude"
+        onChange={e => updatingLat(e)}
       />
       <textarea
         rows="1"
-        placeholder="Latitude"
-        onChange={e => updatingLat(e)}
+        placeholder="Longitude"
+        onChange={e => updatingLong(e)}
       />
 
       {/* <select name="location-type">
