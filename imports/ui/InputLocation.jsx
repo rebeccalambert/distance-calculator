@@ -1,44 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-// export default class InputLocation extends Component {
-//   state = {
-//     counter: 0,
-//   }
+function InputLocation({ settingInfo }) {
 
-//   increment() {
-//     this.setState({
-//       counter: this.state.counter + 1
-//     });
-//   }
 
-//   render() {
-//     return (
-//       <div>
-//         <button onClick={() => this.increment()}>Click Me</button>
-//         <p>You've pressed the button {this.state.counter} times.</p>
-//       </div>
-//     );
-//   }
-// }
-
-function InputLocation({ settingMax }) {
-
-  const updatingMax = e => {
-    // console.log(e.target.value)
-    settingMax(e.target.value);
+  let info = {
+    longitude: "",
+    latitude: "",
+    maxDistance: 0,
   }
 
+  const updateInfo = e => {
+    settingInfo(info);
+  }
+
+  const updatingMax = e => {
+    info.maxDistance = e.target.value;
+  }
+
+  const updatingLong = e => {
+    info.longitude = e.target.value;
+  }
+  const updatingLat = e => {
+    info.latitude = e.target.value;
+  }
+
+
   return (
+
     <div>
-      <label className="form-label">What's the max you want to travel?</label>
-      <input className="form-input"
+      
+      <label>Where are you at?</label>
+      <textarea
+        rows="1"
+        placeholder="Longitude"
+        onChange={e => updatingLong(e)}
+      />
+      <textarea
+        rows="1"
+        placeholder="Latitude"
+        onChange={e => updatingLat(e)}
+      />
+
+      {/* <select name="location-type">
+        <option value="address" defaultValue>Address (Default)</option>
+        <option value="distance">Longitude, Latitude</option>
+      </select> */}
+    
+      <br></br>
+
+      <label>What's the max you want to travel?</label>
+      <input
         type="number"
-        name="party"
         min="0"
         onChange={e => updatingMax(e)}
         placeholder="0"
       />
-      {/* <button onClick={e => incrementing()}>Click Me</button> */}
+
+      <button type="submit" onClick={e => updateInfo(e)}>Find places near me</button>
+
     </div>
   );
 

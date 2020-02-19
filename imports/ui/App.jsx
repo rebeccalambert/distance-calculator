@@ -4,31 +4,28 @@ import Info from './Info.jsx';
 
 
 function App() {
-  // const [count, setCount] = useState(["0"])
+  
+  const [info, setInfo] = useState({})
 
-  // const increment = () => {
-  //   const newCount = (Number(count) + 1)
-  //   setCount(`${newCount}`);
-  // }
+  const settingInfo = (newInfo) => {
+    console.log(newInfo)
+    const newMax = (newInfo.maxDistance);
+    const newLong = (newInfo.longitude);
+    const newLat = (newInfo.latitude);
 
-  const [maxDistance, setMaxDistance] = useState(["0"])
-
-  const settingMax = (newDistance) => {
-    const newMax = (newDistance);
-    // const newMax = (Number(newDistance))
-    console.log(newMax);
-    setMaxDistance(`${newMax}`);
+    setInfo({
+      maxDistance: newMax,
+      longitude: newLong,
+      latitude: newLat
+    });
   }
 
-  const findLocations = () => {
-
-  }
 
   return (
     <div>
       <h1>Welcome to a distance calculator!</h1>
-      <InputLocation settingMax={settingMax}/>
-      <Info maxDistance={maxDistance}/>
+      <InputLocation settingInfo={settingInfo}/>
+      <Info maxDistance={info.maxDistance} Longitude={info.longitude} Latitude={info.latitude}/>
     </div>
   );
 }

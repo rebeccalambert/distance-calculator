@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Locations({ maxDistance }) {
+function Locations({ maxDistance, Longitude, Latitude }) {
   return (
     <section>
       <p>You want to stay within {maxDistance} miles.</p>
