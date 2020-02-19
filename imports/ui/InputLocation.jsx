@@ -1,12 +1,11 @@
 import React from 'react';
 
-function InputLocation({ settingInfo }) {
-
+function InputLocation({ settingInfo, existingInfo }) {
 
   let info = {
-    longitude: "",
-    latitude: "",
-    maxDistance: 0,
+    longitude: existingInfo.longitude,
+    latitude: existingInfo.latitude,
+    maxDistance: existingInfo.maxDistance,
   }
 
   const updateInfo = e => {
@@ -15,36 +14,39 @@ function InputLocation({ settingInfo }) {
 
   const updatingMax = e => {
     info.maxDistance = e.target.value;
+    updateInfo();
   }
 
   const updatingLong = e => {
     info.longitude = e.target.value;
+    updateInfo();
   }
   const updatingLat = e => {
     info.latitude = e.target.value;
+    updateInfo();
   }
 
 
   return (
-
     <div>
-      
       <label>Where are you at?</label>
-      <textarea
+      <input
         rows="1"
         placeholder="Latitude"
+        type="number"
         onChange={e => updatingLat(e)}
       />
-      <textarea
+      <input
         rows="1"
         placeholder="Longitude"
+        type="number"
         onChange={e => updatingLong(e)}
       />
 
-      {/* <select name="location-type">
-        <option value="address" defaultValue>Address (Default)</option>
-        <option value="distance">Longitude, Latitude</option>
-      </select> */}
+      {/* //  <select name="location-type" onChange={location}>
+      //   <option value="address" defaultValue>Address (Default)</option>
+      //   <option value="other">Longitude, Latitude</option>
+      // </select> */}
     
       <br></br>
 
@@ -56,7 +58,7 @@ function InputLocation({ settingInfo }) {
         placeholder="0"
       />
 
-      <button type="submit" onClick={e => updateInfo(e)}>Find places near me</button>
+      {/* <button type="submit" onClick={e => updateInfo(e)}>Find places near me</button> */}
 
     </div>
   );

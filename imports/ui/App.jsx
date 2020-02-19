@@ -5,11 +5,15 @@ import * as citiesArray from '../api/addresses';
 
 function App() {
   
-  const [info, setInfo] = useState({})
+  const [info, setInfo] = useState({
+    maxDistance: 0,
+    longitude: "",
+    latitude: "",
+  })
   const [currCity, setCurrCity] = useState("")
 
   const settingInfo = (newInfo) => {
-    console.log(newInfo)
+    // console.log(newInfo)
     const newMax = (newInfo.maxDistance);
     const newLong = (newInfo.longitude);
     const newLat = (newInfo.latitude);
@@ -17,31 +21,51 @@ function App() {
     setInfo({
       maxDistance: newMax,
       longitude: newLong,
-      latitude: newLat
+      latitude: newLat,
     });
   }
 
 
-  const currentCity = () => {
+  // const currentCity = () => {
+  //   let cities = citiesArray.default;
+  //   for (let i=0; i < cities.length; i++) {
+  //     let city = cities[i]
+  //     // console.log(city.longitude)
+  //     // console.log(info.longitude) 
+  //     if (city.longitude == info.longitude && city.latitude == info.latitude){
+  //       console.log(city.locality)
+  //       setCurrCity(city.locality)
+  //     }
+  //   }
+  // }
+
+  const findCities = e => {
+    let limit = info.maxDistance;
+    // console.log(limit)
+    // console.log("limit")
     let cities = citiesArray.default;
+    let closeCities = []
     for (let i=0; i < cities.length; i++) {
-      let city = cities[i]
-      // console.log(city.longitude)
-      // console.log(info.longitude) 
-      if (city.longitude == info.longitude && city.latitude == info.latitude){
-        console.log(city.locality)
-        setCurrCity(city.locality)
+      let city = cities[i] 
+      console.log(info)
+      // console.log(info.longitude)
+      console.log("---------")
+
+      let distance = 2 * Math.asin(Math.sqrt((Math.sin((info.latitude-city.latitude)/2))^2 + Math.cos(info.latitude) * Math.cos(city.latitude)*(Math.sin((info.longitude-city.longitude)/2))^2))
+      console.log(distance)
+      if (distance <= limit) {
+        closeCities.push(city);
       }
     }
+    return closeCities
   }
-
 
   return (
     <div>
       <h1>Welcome to a distance calculator!</h1>
-      <InputLocation settingInfo={settingInfo}/>
-      <Info maxDistance={info.maxDistance} currCity={currCity} Longitude={info.longitude} Latitude={info.latitude}/>
-      <button onClick={() => currentCity()}>list the cities</button>
+      <InputLocation settingInfo={settingInfo} existingInfo={info}/>
+      <Info maxDistance={info.maxDistance} closeCities={findCities} />
+      <button onClick={(e) => findCities()}>list the cities</button>
     </div>
   );
 }
