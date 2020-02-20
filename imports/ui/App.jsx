@@ -52,7 +52,7 @@ function App() {
       let city = cities[i]; 
       
       let distance = getDistanceFromLatLonInKm(info.latitude, info.longitude, city.latitude, city.longitude);
-      if (distance <= limit) {
+      if (distance <= limit && distance > 0) {
         closeCities.push(city);
       }
     }
@@ -62,7 +62,7 @@ function App() {
   return (
     <div>
       <h1>Welcome to a distance calculator!</h1>
-      <InputLocation settingInfo={settingInfo} existingInfo={info}/>
+      <InputLocation settingInfo={settingInfo} existingInfo={info} citiesArray={citiesArray.default}/>
       <Locations maxDistance={info.maxDistance} closeCities={closeCities} />
       <button onClick={(e) => findCities()}>list the cities</button>
     </div>

@@ -1,6 +1,7 @@
 import React from 'react';
+import AutoComplete from "./Auto";
 
-function InputLocation({ settingInfo, existingInfo }) {
+function InputLocation({ settingInfo, existingInfo, citiesArray }) {
 
   let info = {
     longitude: existingInfo.longitude,
@@ -26,22 +27,37 @@ function InputLocation({ settingInfo, existingInfo }) {
     updateInfo();
   }
 
+  const updateLatFromAddress = lat => {
+    info.latitude = lat;
+  }
+
+  const updateLongFromAddress = long => {
+    info.longitude = long;
+    updateInfo();
+  }
+
+  
 
   return (
     <div>
       <label>Where are you at?</label>
       <input
         rows="1"
+        value={info.latitude}
         placeholder="Latitude"
         type="number"
         onChange={e => updatingLat(e)}
       />
       <input
         rows="1"
+        value={info.longitude}
         placeholder="Longitude"
         type="number"
         onChange={e => updatingLong(e)}
       />
+
+
+    <AutoComplete citiesArray={citiesArray} updateLat={updateLatFromAddress} updateLong={updateLongFromAddress}/>
 
       {/* //  <select name="location-type" onChange={location}>
       //   <option value="address" defaultValue>Address (Default)</option>
