@@ -58,8 +58,6 @@ function InputLocation({ settingInfo, existingInfo }) {
         placeholder="0"
       />
 
-      {/* <button type="submit" onClick={e => updateInfo(e)}>Find places near me</button> */}
-
     </div>
   );
 
