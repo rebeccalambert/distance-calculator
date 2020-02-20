@@ -47,7 +47,12 @@ table {
 	border-spacing: 0;
 }
 
-
+#react-target {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
 
 /* Custom Styling */
 
@@ -66,9 +71,11 @@ body {
 }
 
 .container {
-  margin-top: 10%;
+  margin-top: 3%;
   width: 60vw;
-  padding: 5% 8%;
+  height: 80vh;
+  overflow: scroll;
+  padding: 3% 6%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,7 +155,7 @@ body {
 .results-list {
   margin-top: 15px;
   border-radius: 4px;
-  max-height: 165px;
+  max-height: 185px;
   overflow: scroll;
   border: 1px solid black;
 }
