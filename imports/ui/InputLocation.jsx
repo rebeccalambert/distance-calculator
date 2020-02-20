@@ -22,6 +22,7 @@ function InputLocation({ settingInfo, existingInfo, citiesArray }) {
     info.longitude = e.target.value;
     updateInfo();
   }
+  
   const updatingLat = e => {
     info.latitude = e.target.value;
     updateInfo();
@@ -67,7 +68,6 @@ function InputLocation({ settingInfo, existingInfo, citiesArray }) {
       
       <br></br>
       
-      {/* <div className="distance-input"> */}
         <label>What's the max you want to travel (in kilometers)?</label>
         <br></br>
         <input
@@ -76,7 +76,6 @@ function InputLocation({ settingInfo, existingInfo, citiesArray }) {
           onChange={e => updatingMax(e)}
           placeholder="0"
         />
-      {/* </div> */}
 
     </div>
   );
