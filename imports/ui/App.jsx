@@ -62,10 +62,10 @@ function App() {
 
 
   return (
-    <div>
-      <h1>Welcome to a distance calculator!</h1>
+    <div className="container">
+      <h1>Welcome to your distance calculator!</h1>
       <InputLocation settingInfo={settingInfo} existingInfo={info} citiesArray={citiesArray.default}/>
-      <button onClick={(e) => findCities()}>Find the cities</button>
+      <button className="main-button" onClick={(e) => findCities()}>Find the cities near you</button>
       <Locations maxDistance={info.maxDistance} closeCities={closeCities} />
     </div>
   );

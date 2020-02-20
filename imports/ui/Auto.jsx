@@ -33,21 +33,20 @@ function AutoComplete({ citiesArray, updateLat, updateLong }) {
 
     const results = possibleMatches.map((result, i) => {
         return (
-            <li key={i} onClick={() => handleSelect(result[1], result[2])}>{result[0]}</li>
+            <li className="search-result" key={i} onClick={() => handleSelect(result[1], result[2])}>{result[0]}</li>
         );
     });
 
     return(
         <div>
-        <h1>Possible cities</h1>
-        <div>
+            <label>...or search by address:</label>
+            <br></br>
             <input
             onChange={(e) => matches(e)}
             placeholder='Search by address...'/>
-            <ul>
+            <ul className="address-list">
                 {results}
             </ul>
-        </div>
         </div>
     );
 }

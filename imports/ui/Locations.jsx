@@ -13,7 +13,7 @@ function Locations({ maxDistance, closeCities }) {
     cityList = closeCities.map( (city) =>{
       i += 1;
       return (
-      <li key={i}>
+      <li className="result" key={i}>
         <h4>{city.street_number} {city.route}, {city.locality}, {city.administrativeArea}, {city.country}, {city.postalCode}</h4>
       </li>
       )  
@@ -21,13 +21,13 @@ function Locations({ maxDistance, closeCities }) {
   }
 
   return (
-    <section>
-      <h2>You want to stay within {maxDistance} km. The addresses in that range are:</h2>
-      {/* <h1>Addresses in that range:</h1> */}
-      <ul> 
+    <div className="locations">
+      <h2>You want to stay within {maxDistance} km.</h2>
+      <h2>The addresses in that range are:</h2>
+      <ul className="results-list"> 
         {cityList}
       </ul>
-    </section>
+    </div>
   );
 }
 

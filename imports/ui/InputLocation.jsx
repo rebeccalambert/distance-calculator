@@ -38,37 +38,45 @@ function InputLocation({ settingInfo, existingInfo, citiesArray }) {
 
 
 
-  
+
   return (
-    <div>
-      <label>Where are you at?</label>
-      <input
-        rows="1"
-        value={info.latitude}
-        placeholder="Latitude"
-        type="number"
-        onChange={e => updatingLat(e)}
-      />
-      <input
-        rows="1"
-        value={info.longitude}
-        placeholder="Longitude"
-        type="number"
-        onChange={e => updatingLong(e)}
-      />
+    <div className="form">
 
+        <div className="coords-input">
+          <label>Where are you at?</label>
+          <br></br>
+          <input
+            rows="1"
+            value={info.latitude}
+            placeholder="Latitude"
+            type="number"
+            onChange={e => updatingLat(e)}
+          />
+          <input
+            rows="1"
+            value={info.longitude}
+            placeholder="Longitude"
+            type="number"
+            onChange={e => updatingLong(e)}
+          />
+        </div>
 
-    <AutoComplete citiesArray={citiesArray} updateLat={updateLatFromAddress} updateLong={updateLongFromAddress}/>
-    
+        <div className="address-input">
+          <AutoComplete citiesArray={citiesArray} updateLat={updateLatFromAddress} updateLong={updateLongFromAddress}/>
+        </div>
+      
       <br></br>
-
-      <label>What's the max you want to travel (in kilometers)?</label>
-      <input
-        type="number"
-        min="0"
-        onChange={e => updatingMax(e)}
-        placeholder="0"
-      />
+      
+      {/* <div className="distance-input"> */}
+        <label>What's the max you want to travel (in kilometers)?</label>
+        <br></br>
+        <input
+          type="number"
+          min="0"
+          onChange={e => updatingMax(e)}
+          placeholder="0"
+        />
+      {/* </div> */}
 
     </div>
   );
