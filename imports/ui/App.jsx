@@ -59,12 +59,14 @@ function App() {
     setCloseCities(closeCities)
   }
 
+
+
   return (
     <div>
       <h1>Welcome to a distance calculator!</h1>
       <InputLocation settingInfo={settingInfo} existingInfo={info} citiesArray={citiesArray.default}/>
+      <button onClick={(e) => findCities()}>Find the cities</button>
       <Locations maxDistance={info.maxDistance} closeCities={closeCities} />
-      <button onClick={(e) => findCities()}>list the cities</button>
     </div>
   );
 }

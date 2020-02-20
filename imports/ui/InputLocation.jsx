@@ -36,8 +36,9 @@ function InputLocation({ settingInfo, existingInfo, citiesArray }) {
     updateInfo();
   }
 
-  
 
+
+  
   return (
     <div>
       <label>Where are you at?</label>
@@ -58,11 +59,6 @@ function InputLocation({ settingInfo, existingInfo, citiesArray }) {
 
 
     <AutoComplete citiesArray={citiesArray} updateLat={updateLatFromAddress} updateLong={updateLongFromAddress}/>
-
-      {/* //  <select name="location-type" onChange={location}>
-      //   <option value="address" defaultValue>Address (Default)</option>
-      //   <option value="other">Longitude, Latitude</option>
-      // </select> */}
     
       <br></br>
 
